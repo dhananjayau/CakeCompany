@@ -11,11 +11,11 @@ public class ShipmentProvider : IShipmentProvider
     private readonly IOrderProvider _orderProvider;
     private readonly IOrderService _orderService;
     private readonly ITransportProvider _transportProvider;
-    private readonly ILogger _logger;
+    private readonly ILogger<ShipmentProvider> _logger;
     public ShipmentProvider(IOrderProvider orderProvider, 
                       IOrderService orderService,
                      ITransportProvider transportProvider,
-                     ILogger logger)
+                     ILogger<ShipmentProvider> logger)
     {
         _orderProvider = orderProvider;
         _orderService = orderService;

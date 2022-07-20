@@ -17,6 +17,11 @@ static IHostBuilder CreateHostBuilder(string[] args)
         })
         .ConfigureServices((context, services) =>
         {
+            services.AddLogging(loggerBuilder =>
+            {
+                loggerBuilder.ClearProviders();
+                loggerBuilder.AddConsole();
+            });
             services.AddScoped<IShipmentProvider, ShipmentProvider>();
             services.AddScoped<IOrderProvider, OrderProvider>();
             services.AddScoped<IOrderService, OrderService>();
@@ -26,11 +31,7 @@ static IHostBuilder CreateHostBuilder(string[] args)
             services.AddScoped<Van>().AddScoped<IFactoryDeliver, Van>(s => s.GetService<Van>());
             services.AddScoped<Truck>().AddScoped<IFactoryDeliver, Truck>(s => s.GetService<Truck>());
             services.AddScoped<Ship>().AddScoped<IFactoryDeliver, Ship>(s => s.GetService<Ship>());
-            services.AddLogging(loggerBuilder =>
-            {
-                loggerBuilder.ClearProviders();
-                loggerBuilder.AddConsole();
-            });
+            
         });
 
     return hostBuilder;

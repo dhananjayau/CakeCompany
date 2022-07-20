@@ -10,8 +10,8 @@ public class OrderService : IOrderService
     private readonly ICakeProvider _cakeProvider;
     private readonly IPaymentProvider _paymentProvider;
     private readonly IServiceProvider _serviceProvider;
-    private readonly ILogger _logger;
-    public OrderService(ICakeProvider cakeProvider, IPaymentProvider paymentProvider, IServiceProvider serviceProvider, ILogger logger)
+    private readonly ILogger<OrderService> _logger;
+    public OrderService(ICakeProvider cakeProvider, IPaymentProvider paymentProvider, IServiceProvider serviceProvider, ILogger<OrderService> logger)
     {
         _cakeProvider = cakeProvider;
         _paymentProvider = paymentProvider;
